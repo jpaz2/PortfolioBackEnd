@@ -1,4 +1,4 @@
-package ar.com.portfolio.Portfolio;
+package ar.com.portfolio;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
