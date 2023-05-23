@@ -2,12 +2,16 @@ package ar.com.portfolio.model;
 
 
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,24 +22,30 @@ public class Persona {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
-	private String apellido;
-	private String nombre;
-	private String direccion;
-	private Date fechaNacimiento;
-	private String email;
-	private String telefono;
-	/*@OneToMany(mappedBy = "persona")
-	private List<Educacion> estudios;
+	public long id;
+	public String apellido;
+	public String nombre;
+	public String direccion;
+	public Date fechaNacimiento;
+	public String email;
+	public String telefono;
+
+	//@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "persona")
 	@OneToMany(mappedBy = "persona")
-	private List<Habilidad> habilidades;
+	@JsonIgnoreProperties(value="persona")
+	public List<Educacion> estudios;
 	@OneToMany(mappedBy = "persona")
-	private List<Proyecto> proyectos;
+	@JsonIgnoreProperties(value="persona")
+	public List<Habilidad> habilidades;
 	@OneToMany(mappedBy = "persona")
-	private List<Experiencia> experiencias;
+	@JsonIgnoreProperties(value="persona")
+	public List<Proyecto> proyectos;
 	@OneToMany(mappedBy = "persona")
-	private List<RedSocial> redesSociales; 
-	
+	@JsonIgnoreProperties(value="persona")
+	public List<Experiencia> experiencias;
+	@OneToMany(mappedBy = "persona")
+	@JsonIgnoreProperties(value="persona")
+	public List<RedSocial> redesSociales;
 	public Persona(long id, String apellido, String nombre, String direccion, Date fechaNacimiento, String email,
 			String telefono, List<Educacion> estudios, List<Habilidad> habilidades, List<Proyecto> proyectos,
 			List<Experiencia> experiencias, List<RedSocial> redesSociales) {
@@ -52,21 +62,12 @@ public class Persona {
 		this.proyectos = proyectos;
 		this.experiencias = experiencias;
 		this.redesSociales = redesSociales;
-	} */
-	public Persona(long id, String apellido, String nombre, String direccion, Date fechaNacimiento, String email,
-			String telefono) {
-		super();
-		this.id = id;
-		this.apellido = apellido;
-		this.nombre = nombre;
-		this.direccion = direccion;
-		this.fechaNacimiento = fechaNacimiento;
-		this.email = email;
-		this.telefono = telefono;
 	}
+	public Persona() {
+		
+	} 
 	
 	
-
 
 	
 	

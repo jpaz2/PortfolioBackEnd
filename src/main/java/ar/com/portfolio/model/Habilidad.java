@@ -1,6 +1,5 @@
 package ar.com.portfolio.model;
 
-import java.util.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,18 +11,18 @@ import lombok.Setter;
 
 @Getter
 @Setter
-//@Entity
+@Entity
 public class Habilidad {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
-	private String nombre;
-	private String descripcion;
-	private String img;
-	private long porcentaje;
+	public long id;
+	public String nombre;
+	public String descripcion;
+	public String img;
+	public long porcentaje;
 	@ManyToOne
-	private Persona persona;
+	public Persona persona;
 	
 	public Habilidad(long id, String nombre, String descripcion, String img, long porcentaje, Persona persona) {
 		super();
@@ -33,6 +32,8 @@ public class Habilidad {
 		this.img = img;
 		this.porcentaje = porcentaje;
 		this.persona = persona;
+	}
+	public Habilidad() {
 	}
 	
 

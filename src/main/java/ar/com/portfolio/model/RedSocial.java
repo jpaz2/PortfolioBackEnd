@@ -1,7 +1,5 @@
 package ar.com.portfolio.model;
 
-import java.util.Date;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,16 +11,16 @@ import lombok.Setter;
 
 
 @Getter @Setter	
-//@Entity
+@Entity
 public class RedSocial {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
-	private String nombreRed;
-	private String alias;
-	private String direccion;
+	public long id;
+	public String nombreRed;
+	public String alias;
+	public String direccion;
 	@ManyToOne
-	private Persona persona;
+	public Persona persona;
 	
 	public RedSocial(long id, String nombreRed, String alias, String direccion, Persona persona) {
 		super();
@@ -34,7 +32,9 @@ public class RedSocial {
 	}
 	
 	
-
+	public RedSocial() {
+	
+	}
 
 	
 }

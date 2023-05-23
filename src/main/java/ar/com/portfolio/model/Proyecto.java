@@ -7,24 +7,25 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-//@Entity
+@Entity
 public class Proyecto {
 
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
-	private String nombre;
-	private String descripcion;
-	private Date fechaInicio;
-	private Date fechaFin;
+	public long id;
+	public String nombre;
+	public String descripcion;
+	public Date fechaInicio;
+	public Date fechaFin;
 	@ManyToOne
-	private Persona persona;
+	public Persona persona;
 	
 	public Proyecto(long id, String nombre, String descripcion, Date fechaInicio, Date fechaFin, Persona persona) {
 		super();
@@ -36,7 +37,9 @@ public class Proyecto {
 		this.persona = persona;
 	}
 
-
+	public Proyecto() {
+		
+	}
 
 
 }
