@@ -30,7 +30,6 @@ public class Persona {
 	public String email;
 	public String telefono;
 
-	//@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "persona")
 	@OneToMany(mappedBy = "persona")
 	@JsonIgnoreProperties(value="persona")
 	public List<Educacion> estudios;
