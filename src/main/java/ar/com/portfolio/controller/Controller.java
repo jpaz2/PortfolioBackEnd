@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import ar.com.portfolio.model.Persona;
+import ar.com.portfolio.model.Registro;
+import ar.com.portfolio.service.ILoginService;
 import ar.com.portfolio.service.IPersonaService;
 
 @CrossOrigin(origins = {"http://localhost:4200"})
@@ -24,6 +26,9 @@ public class Controller {
 	
 	@Autowired
 	private IPersonaService persoServ;
+	
+	@Autowired
+	private ILoginService loginServ;
 	
 	@GetMapping ("/error")
 	public String error() {
@@ -57,6 +62,18 @@ public class Controller {
 	@ResponseBody
 	public Persona buscarpersona(@PathVariable long id) {
 		return persoServ.buscarPersona(id);
+	}
+	
+	@PostMapping("/authenticate")
+	@ResponseBody
+	public Persona login(@RequestBody String email, String password) {
+	   return loginServ.buscarRegistro(email, password);
+	}
+	
+	@PostMapping("/nuevo/registro")
+	@ResponseBody
+	public void agregarRegistro(@RequestBody Registro registro) {
+	    loginServ.agregarRegistro(registro);
 	}
 	
 }
